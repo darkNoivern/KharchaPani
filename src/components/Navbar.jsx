@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import '../styles/navbar.css'
+import Rupee from '../images/rupee.png'
 
 const Navbar = (props) => {
     
@@ -15,6 +16,7 @@ const Navbar = (props) => {
             <div className="container-fluid">
                 <Link exact to="/" className="navbar-brand mouse400 py-2">
                     KharchaPani
+                    <img className='ms-2 navbar-logo' src={Rupee} alt="" />
                 </Link>
 
                 <button
