@@ -144,7 +144,7 @@ const Navbar = (props) => {
                                             activeclassname="active"
                                             className="nav-link d-sm-none">
                                             <span data-bs-target="#navbarNav" data-bs-toggle="collapse">
-                                                SignUp
+                                                SignIn
                                             </span>
                                         </NavLink>
                                         <NavLink
@@ -152,7 +152,7 @@ const Navbar = (props) => {
                                             activeclassname="active"
                                             className="nav-link d-none d-sm-block">
                                             <span>
-                                                SignUp
+                                                SignIn
                                             </span>
                                         </NavLink>
                                     </li>
