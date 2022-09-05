@@ -1,0 +1,49 @@
+.curr-balance {
+    height: 10rem;
+    width: 15rem;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 0.5rem solid green;
+    border-radius: 0.5rem;
+}
+
+.animate-amount {
+    font-size: 2rem;
+}
+
+.transaction-ui {
+    height: 5.7rem;
+    width: 100%;
+    max-width: 20rem;
+    border: 1px solid black;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.category-class {
+    font-size: 0.8rem;
+}
+
+.pokemon-tag {
+    height: 0.75rem;
+    width: 0.75rem !important;
+    border-radius: 50%;
+}
+
+.category-style {
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.AddTransactionButton {
+    position: fixed;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    background-color: pink;
+}

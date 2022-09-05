@@ -1,0 +1,7 @@
+.nav-item {
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}

@@ -1,38 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+
 .App {
+  font-family: sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Montserrat", sans-serif !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mouse400 {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400 !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mouse600 {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.flexy {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.curve-btn {
+  border-radius: 1.5rem !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bg-cyan {
+  background-color: #daa520;
+}
+
+.bg-violet {
+  background-color: #8a2be2;
+}
+
+.active {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 600 !important;
+}
+
+.button {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 600 !important;
+  border-radius: 1.5rem !important;
 }

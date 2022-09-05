@@ -1,0 +1,56 @@
+.home-page {
+    width: 100vw;
+    min-height: 85vh;
+    /* overflow-y: scroll; */
+}
+
+.oscillate {
+    width: 80vw !important;
+    max-width: 35rem;
+    height: 80vw !important;
+    max-height: 35rem;
+    border-radius: 50%;
+
+    animation-name: oscillate;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    position: relative !important;
+    animation-timing-function: linear !important;
+}
+
+.homepage-columns {
+    min-height: 45vh;
+}
+
+.homepage-text {
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 120%;
+}
+
+.center-crow{
+    text-align: center;
+}
+
+/* ANiMaTion */
+@keyframes oscillate {
+    0% {
+        top: 0rem;
+    }
+
+    25% {
+        top: -1rem;
+    }
+
+    50% {
+        top: 0rem;
+    }
+
+    75% {
+        top: 1rem;
+    }
+
+    100% {
+        top: 0rem;
+    }
+}
