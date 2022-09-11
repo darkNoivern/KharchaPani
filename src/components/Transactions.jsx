@@ -126,9 +126,7 @@ const Transactions = () => {
                                         <div className="full-width">
                                             <div className="category-class d-flex justify-content-end py-1 pe-2">
                                                 <div className="category-style flexy py-1 px-2">
-                                                    <div
-                                                        className={`pokemon-tag bg-${lotpot.category.split(' ')[0]} me-1`}
-                                                    >
+                                                    <div className={`pokemon-tag bg-${lotpot.category.split(' ')[0]} me-1`}>
                                                         {console.log(lotpot.category.split(' ')[0])}
                                                     </div>
                                                     <div>{lotpot.category}</div>
@@ -155,7 +153,7 @@ const Transactions = () => {
                                             <div className="category-class d-flex justify-content-end py-1 pe-2">
                                                 <div className="category-style flexy py-1 px-2">
                                                     <div
-                                                        className={`pokemon-tag bg-success me-1`}
+                                                        className={`pokemon-tag bg-${lotpot.category.split(' ')[0]} me-1`}
                                                     ></div>
                                                     <div>{lotpot.category}</div>
                                                 </div>
