@@ -1,10 +1,6 @@
 .curr-balance {
     height: 10rem;
     width: 15rem;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    border-right: 0.5rem solid green;
     border-radius: 0.5rem;
 }
 

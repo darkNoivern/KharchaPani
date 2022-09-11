@@ -47,3 +47,56 @@ body {
   font-weight: 600 !important;
   border-radius: 1.5rem !important;
 }
+
+.page-headings {
+  font-size: x-large;
+}
+
+.border-r-success {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 0.5rem solid #198754!important;
+}
+.border-r-danger {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 0.5rem solid #dc3545!important;
+}
+
+.bg-Groceries{
+  background-color: rgba(255, 99, 132, 1);
+}
+
+.bg-Bills{
+  background-color: rgba(54, 162, 235, 1);
+}
+
+.bg-Entertainment{
+  background-color: rgba(255, 206, 86, 1)
+}
+
+.bg-Insurance{
+  background-color: rgba(75, 192, 192, 1);
+}
+
+.bg-Education{
+  background-color: rgba(153, 102, 255, 1);
+}
+
+.bg-Shopping{
+  background-color: rgba(214, 51, 132, 1);
+}
+
+.bg-Household{
+  background-color: rgba(10, 102, 25, 1);
+}
+
+.bg-Others{
+  background-color: rgba(108, 117, 125, 1);
+}
+
+.bg-Salary{
+  background-color: rgba(111, 66, 193, 1);
+}

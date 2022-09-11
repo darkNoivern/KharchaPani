@@ -37,3 +37,13 @@
 .tabular-button{
     cursor: pointer;
 }
+
+.form-control::placeholder{
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 400 !important;
+}
+
+.form-control{
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 400 !important;
+}
