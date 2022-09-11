@@ -77,7 +77,7 @@ const Transactions = () => {
 
     return (
         <>
-            <div className="mouse400 my-5 flexy page-headings">Balance</div>
+            <div className="mouse600 my-5 flexy page-headings">Balance</div>
 
             <div className="row mx-0 mb-5">
                 <div className="col col-6 mouse400 flexy">
