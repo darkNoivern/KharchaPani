@@ -152,7 +152,7 @@ const Navbar = (props) => {
                                                 onClick={() => (logout())}
                                                 exact to={'/signin'}
                                                 activeclassname="active"
-                                                className="nav-link d-md-none">
+                                                className="nav-link mt-2 d-md-none">
                                                 <span data-bs-target="#navbarNav" data-bs-toggle="collapse">
                                                     Logout
                                                 </span>
@@ -161,7 +161,7 @@ const Navbar = (props) => {
                                                 onClick={() => (logout())}
                                                 exact to={'/signin'}
                                                 activeclassname="active"
-                                                className="nav-link d-none d-md-block">
+                                                className="nav-link mt-2 d-none d-md-block">
                                                 <span>
                                                     Logout
                                                 </span>
