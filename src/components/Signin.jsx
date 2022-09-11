@@ -135,7 +135,7 @@ const SignIn = (props) => {
                                 setErr(false);
                                 setAlert(false);
                             }}
-                            className='button ui bg-gate text-white mouse400 sign-round sign-btn mx-0 my-3'>
+                            className='button basic ui bg-gate text-white mouse400 sign-round sign-btn mx-0 my-3'>
                             <i class="google icon me-2"></i>
                             Sign In with Google
                         </button>
