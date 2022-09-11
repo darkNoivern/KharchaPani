@@ -128,10 +128,9 @@ const Manage = () => {
                         updatedAreas[6]+=parseInt(transaction.amount);
                         setDataArray(updatedAreas);
                     }
-                    else if (transaction.category === "Others") {
+                    else if (transaction.type==="expenditure" && transaction.category === "Others") {
                         updatedAreas[7]+=parseInt(transaction.amount);
                         setDataArray(updatedAreas);
-                        console.log(updatedAreas)
                     }
                 })
             }
