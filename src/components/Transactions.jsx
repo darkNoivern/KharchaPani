@@ -5,6 +5,8 @@ import rupeebutton from "../images/rupeebutton.svg";
 import { NavLink, Link } from "react-router-dom";
 import { useEffect } from "react";
 
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 import { db } from "../firebase.config";
 import { auth } from '../firebase.config';
 import {
@@ -59,7 +61,6 @@ const Transactions = () => {
 
     useEffect(() => {
         if (user.length > 0) {
-            console.log(user[0].transactions)
             setTransaction(user[0].transactions)
             const arr = new Array(2).fill(0);
             user[0].transactions.forEach((transaction, index) => {
@@ -75,6 +76,19 @@ const Transactions = () => {
         }
     }, [user])
 
+    const deleteTransaction = (index) => {
+        let arr = user[0].transactions;
+        arr.splice(index, 1);
+        const updateOBJ = {
+            transactions: arr,
+            avatarid: user[0].avatarid,
+            email: user[0].email,
+            position: user[0].position,
+            username: user[0].username,
+        }
+        setDoc(doc(db, 'userdetails', user[0].id), updateOBJ)
+    }
+
     return (
         <>
             <div className="mouse600 my-5 flexy page-headings">Balance</div>
@@ -84,7 +98,7 @@ const Transactions = () => {
                     <div className="curr-balance border-r-success flexy">
                         <div>
                             <div className="text-center">Income</div>
-                            <div className="mt-4">
+                            <div className="mt-2 text-center">
                                 <AnimatedNumber
                                     component={"text"}
                                     className={`animate-amount mouse600`}
@@ -100,7 +114,7 @@ const Transactions = () => {
                     <div className="curr-balance border-r-danger flexy">
                         <div>
                             <div className="text-center">Expenses</div>
-                            <div className="mt-4">
+                            <div className="mt-2 text-center">
                                 <AnimatedNumber
                                     component={"text"}
                                     className={`animate-amount mouse600`}
@@ -117,59 +131,38 @@ const Transactions = () => {
             <div className="transactions-div row mx-0">
 
                 {transaction.map((lotpot, index) => {
-
                     return (
-                        (index !== 0 && transaction[index].date === transaction[index - 1].date) ?
-                            <>
-                                <div className="col col-12 flexy my-3">
-                                    <div className="transaction-ui mouse400 d-flex justify-content-center">
-                                        <div className="full-width">
-                                            <div className="category-class d-flex justify-content-end py-1 pe-2">
-                                                <div className="category-style flexy py-1 px-2">
-                                                    <div className={`pokemon-tag bg-${lotpot.category.split(' ')[0]} me-1`}>
-                                                        {console.log(lotpot.category.split(' ')[0])}
-                                                    </div>
-                                                    <div>{lotpot.category}</div>
-                                                </div>
-                                            </div>
-                                            <div className="row mx-0 py-2">
-                                                <div className="col col-8">{lotpot.reason}</div>
-                                                <div className="col col-4">₹ {lotpot.amount}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                            :
-                            <>
-
+                        <>
+                            {(!(index !== 0 && ((transaction[index].date === transaction[index - 1].date) && (transaction[index].month === transaction[index - 1].month) && (transaction[index].year === transaction[index - 1].year))) &&
                                 <div className="mouse400 flexy mt-1">
                                     {`${lotpot.date}/${lotpot.month}/${lotpot.year}`}
                                 </div>
+                            )}
 
-                                <div className="col col-12 flexy my-3">
-                                    <div className="transaction-ui mouse400 d-flex justify-content-center">
-                                        <div className="full-width">
-                                            <div className="category-class d-flex justify-content-end py-1 pe-2">
-                                                <div className="category-style flexy py-1 px-2">
-                                                    <div
-                                                        className={`pokemon-tag bg-${lotpot.category.split(' ')[0]} me-1`}
-                                                    ></div>
-                                                    <div>{lotpot.category}</div>
-                                                </div>
+                            <div key={index} className="col col-12 flexy my-3">
+                                <div className="transaction-ui mouse400 d-flex justify-content-center">
+                                    <div className="full-width">
+                                        <div className="category-class d-flex justify-content-between py-1 px-2">
+                                            <i
+                                                onClick={() => { 
+                                                    deleteTransaction(index); 
+                                                }}
+                                                className="trash trash-button yellow ms-1 circular inverted alternate outline icon"></i>
+                                            <div className="category-style flexy py-1 px-2">
+                                                <div className={`pokemon-tag bg-${lotpot.category.split(' ')[0]} me-1`}></div>
+                                                <div>{lotpot.category}</div>
                                             </div>
-                                            <div className="row mx-0 py-2">
-                                                <div className="col col-8">{lotpot.reason}</div>
-                                                <div className="col col-4">₹ {lotpot.amount}</div>
-                                            </div>
+                                        </div>
+                                        <div className="row mx-0 py-2">
+                                            <div className="col col-7">{lotpot.reason}</div>
+                                            <div className="col col-5 d-flex justify-content-end">₹ {lotpot.amount}</div>
                                         </div>
                                     </div>
                                 </div>
-
-                            </>
+                            </div>
+                        </>
                     );
                 })
-
                 }
             </div>
 

@@ -29,17 +29,6 @@ const Manage = () => {
     const [user, setUser] = useState([]);
     const [transaction, setTransaction] = useState([]);
 
-    const [form, setForm] = useState({
-        groceries: 0,
-        bill: 0,
-        entertainment: 0,
-        insurance: 0,
-        education: 0,
-        shopping: 0,
-        household: 0,
-        others: 0,
-    });
-
     const [dataArray, setDataArray] = useState([0, 0, 0, 0, 0, 0, 0, 0])
 
     const data = {
@@ -88,25 +77,18 @@ const Manage = () => {
             const user = users.filter((ui, index) => {
                 return (ui.username == substituteData.username);
             })
-            console.log(user)
             if (user.length > 0) {
-                console.log(user[0].transactions)
                 setTransaction(user[0].transactions)
     
-                
                 const updatedAreas = [...dataArray];
                 user[0].transactions.forEach((transaction, index) => {
-                    console.log(form)
-                    console.log('transaction',transaction)
                     if (transaction.category === "Groceries") {
                         updatedAreas[0]+=parseInt(transaction.amount);
                         setDataArray(updatedAreas);
-                        console.log(updatedAreas)
                     }
                     else if (transaction.category === "Bills") {
                         updatedAreas[1]+=parseInt(transaction.amount);
                         setDataArray(updatedAreas);
-                        console.log(updatedAreas)
                     }
                     else if (transaction.category === "Entertainment") {
                         updatedAreas[2]+=parseInt(transaction.amount);
