@@ -31,6 +31,13 @@ const Addtransactions = () => {
     const [reason, setReason] = useState("");
     const [amount, setAmount] = useState("");
 
+    const [numberError, setNumberError] = useState(false);
+
+    function isNumeric(str) {
+        console.log(str)
+        return /^[0-9]+$/.test(str);
+    }
+
     const substituteData = useSelector(state => state);
     const email = substituteData.email;
     const avatarid = substituteData.avatarid;
@@ -59,12 +66,18 @@ const Addtransactions = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setPopup(false);
-        }, 3000);
+        }, 2000);
         return () => clearInterval(interval);
     }, [popup === true]);
 
 
     const submitTransaction = () => {
+
+        if (!isNumeric(amount)) {
+            setNumberError(true);
+            return;
+        }
+
         const date = new Date();
         const form = {
             category,
@@ -77,6 +90,14 @@ const Addtransactions = () => {
             month: date.getMonth(),
             year: date.getFullYear()
         }
+
+        setPopup(true);
+        party.confetti(
+            document.querySelector(".add-transaction-btn"),
+            {
+                count: party.variation.range(20, 40)
+            }
+        );
 
         let arr = user[0].transactions;
         arr.unshift(form);
@@ -137,20 +158,8 @@ const Addtransactions = () => {
 
 
                 <div className="ui attached segment">
-
-
-                    {/* popup && (
-              <div class="alert alert-success d-flex align-items-center my-2 mx-2" role="alert">
-                <i class="check icon mb-2"></i>
-                <div>
-                  Transaction Added
-                </div>
-              </div>
-            ) */}
-
                     {swi === true ? (
                         <>
-
                             <div className="mt-4">
                                 <label
                                     htmlFor=""
@@ -196,8 +205,20 @@ const Addtransactions = () => {
                                 >
                                     Amount
                                 </label>
+                                {(
+                                    numberError &&
+                                    <div class="alert alert-danger d-flex align-items-center my-2" role="alert">
+                                        <i class="check icon mb-2"></i>
+                                        <div>
+                                            Please use only numbers
+                                        </div>
+                                    </div>
+                                )}
                                 <input
-                                    onChange={(event) => { setAmount(event.target.value) }}
+                                    onChange={(event) => { 
+                                        setAmount(event.target.value);
+                                        setNumberError(false); 
+                                    }}
                                     placeholder="Add Amount"
                                     value={amount} type="text" className="index-form form-control" />
                             </div>
@@ -208,13 +229,6 @@ const Addtransactions = () => {
                                         <button
                                             onClick={() => {
                                                 submitTransaction();
-                                                setPopup(true);
-                                                party.confetti(
-                                                    document.querySelector(".add-transaction-btn"),
-                                                    {
-                                                        count: party.variation.range(20, 40)
-                                                    }
-                                                );
                                             }}
                                             className="button add-transaction-btn text-dark curvy-btn ui mt-4"
                                         >
@@ -224,13 +238,6 @@ const Addtransactions = () => {
                                             disabled
                                             onClick={() => {
                                                 submitTransaction();
-                                                setPopup(true);
-                                                party.confetti(
-                                                    document.querySelector(".add-transaction-btn"),
-                                                    {
-                                                        count: party.variation.range(20, 40)
-                                                    }
-                                                );
                                             }}
                                             className="button add-transaction-btn text-dark curvy-btn ui mt-4"
                                         >
@@ -282,8 +289,20 @@ const Addtransactions = () => {
                                 >
                                     Amount
                                 </label>
+                                {(
+                                    numberError &&
+                                    <div class="alert alert-danger d-flex align-items-center my-2" role="alert">
+                                        <i class="check icon mb-2 me-2"></i>
+                                        <div>
+                                            Please use only numbers
+                                        </div>
+                                    </div>
+                                )}
                                 <input
-                                    onChange={(event) => { setAmount(event.target.value) }}
+                                    onChange={(event) => { 
+                                        setAmount(event.target.value);
+                                        setNumberError(false); 
+                                    }}
                                     placeholder="Add Amount"
                                     value={amount} type="text" className="index-form form-control" />
                             </div>
@@ -294,13 +313,6 @@ const Addtransactions = () => {
                                         <button
                                             onClick={() => {
                                                 submitTransaction();
-                                                setPopup(true);
-                                                party.confetti(
-                                                    document.querySelector(".add-transaction-btn"),
-                                                    {
-                                                        count: party.variation.range(20, 40)
-                                                    }
-                                                );
                                             }}
                                             className="button add-transaction-btn text-dark curvy-btn ui mt-4"
                                         >
@@ -310,13 +322,6 @@ const Addtransactions = () => {
                                             disabled
                                             onClick={() => {
                                                 submitTransaction();
-                                                setPopup(true);
-                                                party.confetti(
-                                                    document.querySelector(".add-transaction-btn"),
-                                                    {
-                                                        count: party.variation.range(20, 40)
-                                                    }
-                                                );
                                             }}
                                             className="button add-transaction-btn text-dark curvy-btn ui mt-4"
                                         >

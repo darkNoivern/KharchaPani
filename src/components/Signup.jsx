@@ -22,7 +22,7 @@ const SignUp = (props) => {
     function isAlphanumeric(str) {
         return /^[a-z0-9]+$/i.test(str)
     }
-    
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [alert, setAlert] = useState(false);
@@ -32,6 +32,8 @@ const SignUp = (props) => {
     const [currentUserName, setCurrentUserName] = useState("");
 
     const [avatarNumber, setAvatarNumber] = useState(1);
+
+    const [alphaNumberError, setAlphaNumberError] = useState(false);
 
     //  FIREBASE
     const usersCollectionRef = collection(db, "userdetails");
@@ -52,6 +54,11 @@ const SignUp = (props) => {
     //  SIGNUP FUNCTION
     const signInWithGoogle = () => {
 
+        if(!isAlphanumeric(currentUserName)){
+            setAlphaNumberError(true);
+            return ;
+        }
+
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -65,8 +72,6 @@ const SignUp = (props) => {
                 const checkUsernamePresent = userlist.find((individual) => {
                     return (individual.username === currentUserName);
                 })
-
-
 
                 if (checkEmailPresent !== undefined) {  //  EMAIL FOUND
 
@@ -123,7 +128,6 @@ const SignUp = (props) => {
             });
     };
 
-
     return (
         <>
             <div className="page px-3 px-md-5 flexy">
@@ -162,57 +166,61 @@ const SignUp = (props) => {
 
                     </div>
 
-                    {/* ERROR MESSAGE */}
-                    {err === true ? (
-                        <>
-                            <div className="alert alert-danger d-flex align-items-center" role="alert">
-                                <div>
-                                    <i className="fas fa-exclamation-triangle" />&nbsp;
-                                    Something went wrong TRY AGAIN !!
-                                </div>
+                    {(err &&
+                        <div className="alert alert-danger d-flex align-items-center" role="alert">
+                            <div>
+                                <i className="fas fa-exclamation-triangle" />&nbsp;
+                                Something went wrong TRY AGAIN !!
                             </div>
-                        </>
-                    ) : (
-                        <></>
-                    )}
-                    {/* ALERT MESSAGE */}
-                    {userNameAlert === true ? (
-                        <>
-                            <div className="alert alert-warning d-flex align-items-center" role="alert">
-                                <div>
-                                    <i className="fas fa-exclamation-triangle" />
-                                    &nbsp; This username is already in database ; Try to &nbsp;
-                                    <Link className="text-dark" exact to="/signin">
-                                        Sign In
-                                    </Link>
-                                </div>
-                            </div>
-                        </>
-                    ) : (
-                        <></>
+                        </div>
                     )}
 
-                    {/* ALERT MESSAGE */}
-                    {alert === true ? (
-                        <>
-                            <div className="alert alert-warning d-flex align-items-center" role="alert">
-                                <div>
-                                    <i className="fas fa-exclamation-triangle" />
-                                    &nbsp;This mail is already in database ; Try to &nbsp;
-                                    <Link className="text-dark" exact to="/signin">
-                                        Sign In
-                                    </Link>
-                                </div>
+                    {(userNameAlert &&
+                        <div className="alert alert-warning d-flex align-items-center" role="alert">
+                            <div>
+                                <i className="fas fa-exclamation-triangle" />
+                                &nbsp; This username is already in database ; Try to &nbsp;
+                                <Link className="text-dark" exact to="/signin">
+                                    Sign In
+                                </Link>
                             </div>
-                        </>
-                    ) : (
-                        <></>
+                        </div>
+                    )}
+
+                    {(alert &&
+                        <div className="alert alert-warning d-flex align-items-center" role="alert">
+                            <div>
+                                <i className="fas fa-exclamation-triangle" />
+                                &nbsp;This mail is already in database ; Try to &nbsp;
+                                <Link className="text-dark" exact to="/signin">
+                                    Sign In
+                                </Link>
+                            </div>
+                        </div>
                     )}
 
                     <div className="my-5">
+                        <div class="alert alert-warning d-flex align-items-center my-2" role="alert">
+                            <i class="info icon mb-2 me-2"></i>
+                            <div>
+                                Please use only alphanumeric characters
+                            </div>
+                        </div>
                         <label for="exampleFormControlInput1" className="mouse400 form-label">Username</label>
+                        {(
+                                    alphaNumberError &&
+                                    <div class="alert alert-danger d-flex align-items-center my-2" role="alert">
+                                    <i class="x icon mb-2 me-2"></i>
+                                        <div>
+                                            Please use only alphanumeric charcters
+                                        </div>
+                                    </div>
+                                )}
                         <input
-                            onChange={(event) => { setCurrentUserName(event.target.value) }}
+                            onChange={(event) => { 
+                                setCurrentUserName(event.target.value);
+                                setAlphaNumberError(false); 
+                            }}
                             type="text"
                             className="mouse400 form-control username-input"
                             id="exampleFormControlInput1" />
