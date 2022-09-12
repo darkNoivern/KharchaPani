@@ -292,7 +292,7 @@ const Addtransactions = () => {
                                 {(
                                     numberError &&
                                     <div class="alert alert-danger d-flex align-items-center my-2" role="alert">
-                                        <i class="check icon mb-2 me-2"></i>
+                                        <i class="x icon mb-2 me-2"></i>
                                         <div>
                                             Please use only numbers
                                         </div>
